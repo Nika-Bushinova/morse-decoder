@@ -38,43 +38,42 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    let arr2 = expr.split('')
-    let arr = []
-    function change(numArr) {
-       let resultF = []
-       let result = []
-       let result3 = []
-       let result4 = []
-       result5 = []
-       let el2
-       numArr.forEach((element) => {
-          resultF.push(element.join(''))
-          resultF.forEach((el, i) => {
-             return el === '10' ? el2 = '.' : el === '11' ? el2 = '-' : el === '**' ? el2 = ' ' : el === '00' ? el2 = '' : el2 = ''
-          })
-          result.push(el2)
-       })
-        while (result.length > 0) {
-          result4.push(result.splice(0, 5).join(''))
-       }
-        
-          for (let i = 0; i < result4.length; i++) {
-             if(result4[i]==='     '){result5.push(' ')}
-          for (let key in MORSE_TABLE) {
- 
-             if (result4[i] === key) {
-                result5.push(MORSE_TABLE[key])
-             }
- 
-          }
-       } 
-       return result5.join('')
-    }
-    while (arr2.length > 0) {
-       arr.push(arr2.splice(0, 2))
-    }
-    return change(arr)
- }
+   let arr = expr.split('')
+   let arr2 = []
+   function change(numArr) {
+      let arr3 = []
+      let arr4 = []
+      let arr5 = []
+      let result = []
+      let el2
+      numArr.forEach((element) => {
+         arr3.push(element.join(''))
+         arr3.forEach((el, i) => {
+            return el === '10' ? el2 = '.' : el === '11' ? el2 = '-' : el === '**' ? el2 = ' ' : el === '00' ? el2 = '' : el2 = ''
+         })
+         arr4.push(el2)
+      })
+       while (arr4.length > 0) {
+         arr5.push(arr4.splice(0, 5).join(''))
+      }
+       
+         for (let i = 0; i < arr5.length; i++) {
+            if(arr5[i]==='     '){result.push(' ')}
+         for (let key in MORSE_TABLE) {
+
+            if (arr5[i] === key) {
+               result.push(MORSE_TABLE[key])
+            }
+
+         }
+      } 
+      return result.join('')
+   }
+   while (arr.length > 0) {
+      arr2.push(arr.splice(0, 2))
+   }
+   return change(arr2)
+}
 
 module.exports = {
     decode
